@@ -3,7 +3,7 @@ title: AI vs Human Text Classifier
 emoji: 🚀
 colorFrom: indigo
 colorTo: pink
-sdk: gradio
+sdk: streamlit
 sdk_version: 5.25.2
 app_file: app.py
 pinned: false
