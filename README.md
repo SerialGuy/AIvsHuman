@@ -4,7 +4,7 @@ emoji: 🚀
 colorFrom: indigo
 colorTo: pink
 sdk: streamlit
-sdk_version: 5.25.2
+sdk_version: 1.32.2
 app_file: app.py
 pinned: false
 ---
@@ -39,13 +39,3 @@ This project is a machine learning-based system designed to distinguish between 
 ├── train_model.ipynb      # Notebook to preprocess and train the model
 ├── requirements.txt       # (Optional) Dependencies
 └── README.md              # Project overview and instructions
----
-title: AI vs Human Text Classifier
-emoji: 🧠
-colorFrom: indigo
-colorTo: pink
-sdk: gradio
-sdk_version: "4.20.0"
-app_file: app.py
-pinned: false
----
