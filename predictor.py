@@ -21,7 +21,7 @@ def sentence_length(text):
     sentences = text.split('.')
     return sum(len(s.split()) for s in sentences) / len(sentences) if sentences else 0
 
-def preprocess_text(text, vectorizer):
+def preprocess_text(text):
     """Convert text to feature vectors (TF-IDF + readability metrics)"""
     
     # Convert input text into a DataFrame
