@@ -14,6 +14,11 @@ if st.button("Predict"):
         st.warning("Please enter some text to analyze.")
     else:
         prediction, confidence = predict_text(text_input)
-        label = "🧠 Human" if prediction == 1 else "🤖 AI"
-        st.success(f"**Prediction:** {label}")
-        st.info(f"**Confidence:** {confidence*100:.2f}%")
+        
+        if prediction == 1:
+            st.success("**Class**: 🤖 AI-Generated")
+            st.info(f"**Confidence**: {confidence * 100:.2f}% (AI)")
+        else:
+            st.success("**Class**: 🧠 Human-Written")
+            st.info(f"**Confidence**: {(1 - confidence) * 100:.2f}% (Human)")
+

@@ -44,5 +44,5 @@ def preprocess_text(text):
 def predict_text(text):
     X_sample = preprocess_text(text)
     prediction = model.predict(X_sample)[0]
-    confidence = model.predict_proba(X_sample)[0][1] 
+    confidence = model.predict_proba(X_sample)[:,1][0] 
     return prediction, confidence
