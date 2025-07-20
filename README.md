@@ -24,10 +24,9 @@ This project is a machine learning-based system designed to distinguish between 
 
 ---
 
-## 🚀 Live Demo (Optional)
+## 🚀 Live Demo 
 
 🔗 **[Try it on Hugging Face Spaces](https://huggingface.co/spaces/SerialGuy/ai-vs-human)**  
-(*Coming Soon — stay tuned!*)  
 > Enter a piece of text and the model will predict whether it's written by an AI or a human.
 
 ---
