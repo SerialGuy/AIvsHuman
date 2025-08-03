@@ -72,28 +72,17 @@ st.markdown("""
         font-family: 'Playfair Display', serif;
         font-size: 4rem;
         font-weight: 700;
-        color: #d4af37;
+        color: #d4af37 !important;
         margin-bottom: 1.5rem;
-        text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
+        text-shadow: 0 4px 8px rgba(212, 175, 55, 0.3);
         position: relative;
         z-index: 1;
-        /* Fallback gradient for better compatibility */
-        background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-    }
-    
-    /* Fallback for browsers that don't support background-clip */
-    @supports not (-webkit-background-clip: text) {
-        .main-title {
-            color: #d4af37 !important;
-            background: none !important;
-        }
+        display: block !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
     
     .subtitle {
-        display: contents;
         font-size: 1.4rem;
         color: rgba(255, 255, 255, 0.8);
         max-width: 600px;
@@ -492,13 +481,30 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# Hero Section
-st.markdown("""
-<div class="hero-section">
-    <h1 class="main-title">🤖 AI vs Human Detector</h1>
-    <p class="subtitle">Unveil the origin of any text with precision. Advanced AI technology meets elegant design to deliver instant, accurate analysis of whether content was crafted by artificial intelligence or human creativity.</p>
-</div>
-""", unsafe_allow_html=True)
+# Hero Section with Streamlit fallback
+col1, col2, col3 = st.columns([1, 2, 1])
+with col2:
+    st.markdown("""
+    <div class="hero-section">
+        <h1 class="main-title">🤖 AI vs Human Detector</h1>
+        <p class="subtitle">Unveil the origin of any text with precision. Advanced AI technology meets elegant design to deliver instant, accurate analysis of whether content was crafted by artificial intelligence or human creativity.</p>
+    </div>
+    """, unsafe_allow_html=True)
+
+# Emergency fallback if CSS fails on HuggingFace
+if 'title_shown' not in st.session_state:
+    st.session_state.title_shown = True
+    # This will show if CSS fails
+    st.markdown("""
+    <script>
+    setTimeout(function() {
+        var title = document.querySelector('.main-title');
+        if (!title || window.getComputedStyle(title).opacity === '0' || window.getComputedStyle(title).visibility === 'hidden') {
+            document.querySelector('.backup-title').style.display = 'block';
+        }
+    }, 100);
+    </script>
+    """, unsafe_allow_html=True)
 
 # Feature Cards
 st.markdown("""
