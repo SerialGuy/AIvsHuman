@@ -72,14 +72,24 @@ st.markdown("""
         font-family: 'Playfair Display', serif;
         font-size: 4rem;
         font-weight: 700;
-        background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        color: #d4af37;
         margin-bottom: 1.5rem;
         text-shadow: 0 0 30px rgba(212, 175, 55, 0.3);
         position: relative;
         z-index: 1;
+        /* Fallback gradient for better compatibility */
+        background: linear-gradient(135deg, #d4af37 0%, #ffd700 50%, #b8860b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+    
+    /* Fallback for browsers that don't support background-clip */
+    @supports not (-webkit-background-clip: text) {
+        .main-title {
+            color: #d4af37 !important;
+            background: none !important;
+        }
     }
     
     .subtitle {
@@ -92,7 +102,6 @@ st.markdown("""
         font-weight: 400;
         position: relative;
         z-index: 1;
-        
     }
     
     /* Feature Cards Grid */
@@ -519,11 +528,12 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 text_input = st.text_area(
-    "",
+    "Text Input",
     height=200,
     placeholder="Paste your text here for AI detection analysis. Longer texts provide more accurate results. Whether it's an article, essay, or any written content, our advanced algorithms will analyze the linguistic patterns and provide instant results...",
     help="Enter the text you want to analyze. The system works best with at least 50 words.",
-    key="text_input"
+    key="text_input",
+    label_visibility="hidden"
 )
 
 # Predict Button
